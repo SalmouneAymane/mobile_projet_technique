@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Rock"
+    },
+    {
+        "id": 2,
+        "name": "Jazz"
+    },
+    {
+        "id": 3,
+        "name": "Pop"
+    },
+    {
+        "id": 4,
+        "name": "r&b"
+    },
+    {
+        "id": 5,
+        "name": "rap"
+    },
+    {
+        "id": 6,
+        "name": "jpop"
+    },
+    {
+        "id": 7,
+        "name": "chabi"
+    },
+    {
+        "id": 8,
+        "name": "da"
+    },
+    {
+        "id": 9,
+        "name": "skrr"
+    }
+]
