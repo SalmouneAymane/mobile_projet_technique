@@ -11,7 +11,6 @@ public function __construct($newName)
 
     $content = file_get_contents($jsonPath);
     $data = json_decode($content,true);
-
     $this->id = is_array($data) ? count($data)+1 :1;
     $this->name = $newName;
 }

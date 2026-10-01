@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genres</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <main>
-        <header>
-            <h1>Genres</h1>
-            <button id="btn_show_form" type="button"r>show form</button>
+<body class="min-h-screen bg-emerald-50 px-4 py-10 text-slate-800">
+    <main class="mx-auto w-full max-w-4xl">
+        <header class="mb-6 flex items-center justify-between gap-4">
+            <h1 class="text-2xl font-semibold text-emerald-950">Genres</h1>
+            <button id="btn_show_form" type="button" class="bg-rose-700 px-5 py-3 text-white">+ Add genre</button>
         </header>
-        <section>
+        <section class="bg-white p-4 sm:p-7">
 
-            <form id="form" hidden="true">
-                <label for="form_name">name</label>
-                <input type="text" id="form_name" placeholder="jaz">
-                <button id="btn_cancel_form" type="button">cancel</button>
-                <button id="btn_submit_form" type="submit">submit</button>
+            <form id="form" hidden class="mb-6 flex flex-col gap-3 bg-emerald-50 p-4 sm:flex-row sm:items-center">
+                <label for="form_name" class="sr-only">Genre name</label>
+                <input type="text" name="name" id="form_name" placeholder="Genre name" class="min-w-0 w-full border border-slate-300 bg-white px-4 py-3 outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100 sm:flex-1">
+                <button id="btn_cancel_form" type="button" class="border border-slate-300 px-5 py-3 text-slate-700">Cancel</button>
+                <button id="btn_submit_form" type="submit" class="bg-emerald-700 px-5 py-3 text-white">Add</button>
             </form>
 
-            <table border="1">
-                <thead>
-                    <th>Id</th>
-                    <th>Name</th>
+            <table class="w-full text-left">
+                <thead class="bg-emerald-100/70 text-emerald-950">
+                    <tr>
+                        <th class="px-5 py-4">ID</th>
+                        <th class="px-5 py-4">Name</th>
+                    </tr>
                 </thead>
-                <tbody id="table_body">
-                   
+                <tbody id="table_body" class="divide-y divide-slate-100">
                 </tbody>
             </table>
         </section>

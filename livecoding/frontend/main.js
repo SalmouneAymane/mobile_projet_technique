@@ -15,7 +15,7 @@ document.addEventListener(("DOMContentLoaded"),()=>{
         form.hidden = true;
         btn_show_form.hidden=false;
     });
-    btn_submit_form.addEventListener("click",(event)=>{
+    form.addEventListener("submit",(event)=>{
         event.preventDefault();
         form.hidden = true;
         btn_show_form.hidden=false;
@@ -28,39 +28,38 @@ document.addEventListener(("DOMContentLoaded"),()=>{
         fetch(API_URL)
         .then((response)=>response.json())
         .then((data)=>{
-        table_body.innerHTML=""
            data.forEach((genre) => {
             HTML=
                 `<tr>
-                    <td>${genre.id}</td>
-                    <td>${genre.name}</td>
+                    <td class="px-5 py-4">${genre.id}</td>
+                    <td class="px-5 py-4">${genre.name}</td>
                 </tr>
                 `;
                 table_body.insertAdjacentHTML("beforeend" , HTML);
             });
         });
     };
-    function pushGenres(name){
-            function getGenres(){
-
-        const data=[
-            { "name" : name  }
-        ];
+function pushGenres(name){
+        const data=
+            { name : name  }
+    ;
 
         fetch(API_URL,{
             method : "POST",
-            headers : {"Content-Type":"application/json"},
+            headers : {"Content-Type":"application/json",},
             body : JSON.stringify(data)
         })
         .then((response)=>response.json())
         .then((data)=>{
         form.hidden = true;
         btn_show_form.hidden=false;
+        form.reset();
+        table_body.innerHTML=""
         getGenres();
 
-            });
+        });
 
-    };
 };
+
     getGenres();
 });

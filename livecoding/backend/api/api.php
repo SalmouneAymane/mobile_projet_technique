@@ -8,12 +8,23 @@ $content = file_get_contents($jsonPath);
 $data = json_decode($content,true);
 
 
-if ([$_SERVER["REQUEST_METHOD"]="POST"]){
+
+if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $raw = file_get_contents("php://input");
     $payload = json_decode($raw,true);
+
+    $obj = new Genre($payload["name"]);
+
+    $data[]=[
+        "id"=>$obj->getId(),
+        "name"=>$obj->getName()
+    ];
+
+    file_put_contents($jsonPath,json_encode($data,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE));
     
-    $obj = new Genre($payload[0]["name"]);
+
 };
+
 
 
 
