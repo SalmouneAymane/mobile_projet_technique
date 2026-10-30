@@ -74,7 +74,7 @@
 
                 <div id="section-form" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hidden">
                     <h2 class="text-lg font-bold mb-4">Ajouter / Modifier une genre</h2>
-                    <form id="form-genre" class="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <form id="form-categorie" class="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <input type="hidden" id="cat-id" value="">
                         
                         <div>
@@ -99,8 +99,8 @@
                     <table class="w-full min-w-0 text-left border-collapse">
                         <thead class="bg-gray-50 border-b border-gray-200">
                             <tr>
-                                <th class="p-4 text-sm font-semibold text-gray-500 uppercase">Nom</th>
-                                <th class="p-4 text-sm font-semibold text-gray-500 uppercase text-right">Actions</th>
+                                <th class="p-4 text-sm font-semibold text-gray-500 uppercase hidden md:block">id</th>
+                                <th class="p-4 text-sm font-semibold text-gray-500 uppercase text-right">name</th>
                             </tr>
                         </thead>
                         <tbody id="table-categories-body" class="divide-y divide-gray-100">
@@ -112,8 +112,7 @@
         </main>
     </div>
 
-    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2"
-         aria-live="polite" aria-atomic="true"></div>
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2"></div>
 
     <script src="frontend/script.js"></script>
 </body>

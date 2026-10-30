@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const cat_name = document.getElementById("cat-nom");
     const btn_cancel_form = document.getElementById("btn-cancel-form");
     const tBody = document.getElementById ("table-categories-body");
+
+
+
+
     function getData() {
         fetch(API_URL)
         .then((response)=>response.json())
@@ -14,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
             data.forEach((genre) => {
             const HTML=`
             <tr>
-                <td class="p-4">${genre.id}<td>
-                <td class="p-4">${genre.name}<td>
+                <td class="p-4 hidden text-right md:block ">${genre.id}<td>
+                <td class="p-4 text-right ">${genre.name}<td>
             </tr>
             `;
             tBody.insertAdjacentHTML("beforeend",HTML);
@@ -33,13 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
             headers : {"Content-Type": "application/json",},
             body : JSON.stringify(data)
         })
-        .then((response)=> response.json())
-        .then((data)=>{
+        .then(response=> response.text())
+        .then(tt=>{
+            console.log(tt);
+            toast("added","success");
             section_form.classList.add("hidden");
             section_form.classList.remove('block');
             form_categorie.reset();
+            // toast("enrigistre","success");
 
         })
+        .catch(error =>{
+            toast(error,"error")
+        }
+        );
     }
 
     btn_show_form.addEventListener ("click",()=>{
@@ -55,8 +66,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = cat_name.value.trim();
         pushData(name);
         getData();
+        section_form.classList.remove("hidden");
+        section_form.classList.add('block');
+        form_categorie.reset();
+        
     });
+function toast (message , type = "success") {
+    const container = document.getElementById("toast-container");
+    const toast = document.createElement("div");
+    toast.className = `toast toast-${type}`
+    toast.textContent = message ;
 
+    container.appendChild(toast);
+
+    setTimeout(()=>{
+        toast.remove();
+    },3000);
+}
 
 
 getData();

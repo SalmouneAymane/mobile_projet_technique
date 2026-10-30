@@ -5,14 +5,9 @@ class Genre {
 
     
 
-    public function __construct($NName)
+    public function __construct($Nid,$NName)
     {
-
-    $jsonPath = __DIR__."/database/database.json";
-
-    $content = file_get_contents($jsonPath);
-    $data = json_decode($content,true);
-    $this->id = is_array($data) ? count($data)+1 :1;
+        $this->id = $Nid;
         $this->name = $NName;
     }
 
