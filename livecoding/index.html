@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Music</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: { 50: '#f0f6ff', 500: '#2673e8', 600: '#1c5bba', 900: '#0a2042' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        .toast {
+            width: min(24rem, calc(100vw - 2rem));
+            padding: 0.875rem 1rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+        }
+
+        .toast-success {
+            background-color: #15803d;
+        }
+
+        .toast-error {
+            background-color: #b91c1c;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex h-screen overflow-hidden md:flex-row min-h-screen">
+
+    <aside class="w-64 bg-gray-900 text-white flex flex-col hidden md:block">
+        <div class="p-6 border-b border-gray-800">
+            <h2 class="text-xl font-bold">Admin music platform</h2>
+            <p class="text-xs text-primary-500 mt-1 uppercase font-semibold tracking-wider">Sprint 1</p>
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+            <a href="#" class="block px-4 py-2 rounded text-gray-400 hover:bg-gray-800 hover:text-white transition-colors">Tableau de bord</a>
+            <a href="#" class="block px-4 py-2 rounded text-gray-400 hover:bg-gray-800 hover:text-white transition-colors">Articles</a>
+            <a href="#" class="block px-4 py-2 rounded bg-primary-600 text-white font-medium">Catégories</a>
+        </nav>
+    </aside>
+
+    <div class="flex-1 min-w-0 flex flex-col h-screen overflow-hidden">
+        
+        <header class="bg-white h-16 border-b border-gray-200 flex items-center justify-between px-6">
+            <div class="font-medium text-gray-600">
+                Gestion des Genre
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold">Admin</span>
+            </div>
+        </header>
+
+        <main class="flex-1 min-w-0 overflow-y-auto p-6 bg-gray-50">
+            <div class="max-w-5xl min-w-0 mx-auto space-y-8">
+                
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">Catégories</h1>
+                        <p class="text-sm text-gray-500">Organisez les rubriques de votre Music platform.</p>
+                    </div>
+                    <button id="btn-show-form" class="bg-primary-600 text-white px-4 py-2 rounded shadow hover:bg-primary-700 transition">
+                        + Nouvelle Catégorie
+                    </button>
+                </div>
+
+                <div id="section-form" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 hidden">
+                    <h2 class="text-lg font-bold mb-4">Ajouter / Modifier une genre</h2>
+                    <form id="form-genre" class="space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="hidden" id="cat-id" value="">
+                        
+                        <div>
+                            <label for="cat-nom" class="block text-sm font-semibold text-gray-700 mb-1">Nom de la catégorie</label>
+                            <input type="text" id="cat-nom" required placeholder="Ex: Développement Web" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </div>
+
+
+                        <div class="flex justify-end gap-2 mt-4">
+                            <button type="button" id="btn-cancel-form" class="px-4 py-2 text-gray-600 border border-gray-300 rounded hover:bg-gray-100 transition">
+                                Annuler
+                            </button>
+                            <button type="submit" id="btn-enregistrer-categorie" class="px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700 transition">
+                                Enregistrer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="w-full min-w-0 bg-white rounded-lg shadow-sm border border-gray-200 overflow-x-auto overscroll-x-contain">
+                    <table class="w-full min-w-0 text-left border-collapse">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="p-4 text-sm font-semibold text-gray-500 uppercase">Nom</th>
+                                <th class="p-4 text-sm font-semibold text-gray-500 uppercase text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-categories-body" class="divide-y divide-gray-100">
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2"
+         aria-live="polite" aria-atomic="true"></div>
+
+    <script src="frontend/script.js"></script>
+</body>
+</html>
